@@ -1,23 +1,7 @@
-.app{
-  min-height: 100vh;
-  background: rgb(133, 133, 236);
-  display: grid;
-  justify-content: space-around;
-  
-}
-.gist{
-
-  background: greenyellow;
-  border-radius: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.badge{
-  background: rgb(94, 99, 87);
-  border-radius: 3px;
-  justify-content: space-around;
-  align-items: center;
+.badge {
+    display: inline-block;
+    border-radius: 50%;
+    text-align: center;
+    background: #23df2dc5;
+    color: #fefefe;
 }

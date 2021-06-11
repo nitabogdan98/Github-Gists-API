@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Gist from "./Gist";
-import './App.css'
+import { Container, Button, Form } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const api = axios.create();
 let id = 1;
@@ -45,38 +46,43 @@ class App extends Component {
   }
 
   render() {
+
     const { username } = this.state.username;
     if (this.state.gists.length > 0) {
       return (
-        <div className="app">
-          <table>
-            <tr>
-              <th>Gists</th>
-              <th>Users who forked</th>
-            </tr>
+        <Container>
 
-            {this.state.gists.map(gist => (
+          <table className="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Gists</th>
+                <th scope="col">Users who forked</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.gists.map(gist => (
               <Gist gist={gist} />
             ))}
-            </table>
-            <form onSubmit={this.handleSubmit}>
-              <p><button>Next</button></p>
-            </form>
-            
-        </div>
-          )
+            </tbody>
+          </table>
+          <Button onClick={this.handleSubmit}>Next</Button>
+        </Container>
+      )
     } else {
       return (
-          <div className="app">
-            <p>{this.state.message}</p>
-            <form onSubmit={this.handleSubmit}>
-              <p><input type="text" placeholder="Username" value={username} name="username" onChange={this.handleInputChange}></input></p>
-              <p><button>Search for Gists</button></p>
-            </form>
-          </div>
-          );
+        <Container>
+          <p>{this.state.message}</p>
+          <Form>
+            <Form.Group>
+              <Form.Control type="text" placeholder="username" value={username} name="username" onChange={this.handleInputChange} />
+            </Form.Group>
+            <Button onClick={this.handleSubmit}>Search for Gists</Button>
+          </Form>
+        </Container>
+      );
     }
   }
 }
 
-          export default App;
+export default App;
+

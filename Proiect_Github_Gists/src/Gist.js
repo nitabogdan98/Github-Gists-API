@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
 import axios from 'axios';
+import "./App.css";
 
 
 const Gist = ({ gist }) => {
@@ -42,12 +42,19 @@ const Gist = ({ gist }) => {
 
     return (
         <tr>
-            <td>{files.map(file =>
-                <td> <a href={file.raw_url} target="_blank" rel="noopener noreferrer">{file.filename.split(".")[0]}</a> <span className="badge">{file.language}</span></td>
-            )}</td>
-            <td>{fork1} </td>
-            <td>{fork2} </td>
-            <td>{fork3} </td>
+            <th scope="row">
+                <td>
+                    {files.map(file =>
+                        <p><a href={file.raw_url} target="_blank" rel="noopener noreferrer">{file.filename.split(".")[0]}</a>
+                            <span className="badge">    {file.language}</span>
+                        </p>
+                    )}
+                </td>
+            </th>
+            <th scope="row">
+                <td>{fork1} {fork2} {fork3}</td>
+            </th>
+
         </tr>
     )
 }
